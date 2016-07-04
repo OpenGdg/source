@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<script src="libs/angular.js"></script>
+<script src="libs/angular-route.js"></script>
+
+<body ng-app="myApp">
+
+<p><a href="#/">Main</a></p>
+
+<a href="#signup">Signup</a>
+<a href="#events">Events</a>
+<a href="#myevents">My Events</a>
+<a href="#profile">Profile</a>
+<br>
+<div ng-view></div>
+
+<script src="app.js"></script>
+<script src="controllers/login.js"></script>
+<script src="controllers/signup.js"></script>
+<script src="controllers/profile.js"></script>
+<script src="controllers/newevent.js"></script>
+
+</body>
+</html>
+

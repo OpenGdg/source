@@ -1,0 +1,16 @@
+Title:<input type="text" ng-model="title" required="true">
+<br>Description:<input type="text" ng-model="description" required="true">
+<br>City:<input type="text" ng-model="city" required="true">
+<br><input type="checkbox" ng-model="sponsor">I need sponsor
+<div ng-show="sponsor">
+<br>Budget:<input type="number" ng-model="budget">
+</div>
+<br><input type="checkbox" ng-model="venue">I need venue
+<div ng-hide="venue">
+<br>Venue: <input type="text" ng-model="address" required="true">
+</div>
+<br>Date: <input type="date" ng-model="date" required="true">
+<br>Time: <input type="time" ng-model="time" required="true">
+
+<br>Maximum Participants: <input type="number" ng-model="maxparticipants" required="true">
+<br><button ng-click="">Create an event</button>
