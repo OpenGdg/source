@@ -1,13 +1,17 @@
 var app = angular.module("myApp", ["ngRoute"]);
-app.config(function($routeProvider) {
+app.config(function($routeProvider, $locationProvider) {
     $routeProvider
+    .when("/", {
+        templateUrl : "views/login.html",
+        controller : "loginCtrl"
+    })
     .when("/events", {
         templateUrl : "views/dashboard.html",
         controller : "dashCtrl"
     })
-    .when("/", {
-        templateUrl : "views/login.html",
-        controller : "loginCtrl"
+    .when("/events/:id", {
+    	templateUrl : "views/event.html",
+    	controller : "eventCtrl"
     })
     .when("/profile", {
         templateUrl : "views/profile.html",
@@ -21,4 +25,5 @@ app.config(function($routeProvider) {
     	templateUrl : "views/newevent.html",
     	controller : "neweventCtrl"
     });
+   // $locationProvider.html5Mode(true);
 });
