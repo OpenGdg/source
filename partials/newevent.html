@@ -1,22 +1,51 @@
-Title:<input type="text" ng-model="newevent.name" required="true">
-<br>Description:<input type="text" ng-model="newevent.description" required="true">
-<br>City:<input type="text" ng-model="newevent.city" required="true">
+<h1>
+	Create an event
+</h1>
+
+<table style="width:50%">
+	<tr>
+		<td>Title:</td>
+		<td><input type="text" ng-model="newevent.name" ></td>
+	</tr>
+
+	<tr>
+		<td>Description:</td>
+		<td><input type="text" ng-model="newevent.description"></td>
+	</tr>
+	<tr>
+		<td>City:</td>
+		<td><input type="text" ng-model="newevent.city" ></td>
+	</tr>
+	<tr>
+		<td>Venue:</td>
+		<td><input type="text" ng-model="newevent.venue" ></td>
+	</tr>
+	<tr>
+		<td>Contact Phone:</td>
+		<td><input type="text" ng-model="newevent.contact_phone" ></td>
+	</tr>
+	<tr>
+		<td>Contact Address:</td>
+		<td><input type="mail" ng-model="newevent.contact_mail"></td>
+	</tr>
 <!--<br><input type="checkbox" ng-model="sponsor">I need sponsor
 <div ng-show="sponsor">
 <br>Budget:<input type="number" ng-model="budget">
 </div>
 <br><input type="checkbox" ng-model="venue">I need venue
 <div ng-hide="venue">-->
-<br>Venue: <input type="text" ng-model="newevent.venue" required="true">
+ 
 <!--</div>-->
-<br>Contact Phone:<input type="text" ng-model="newevent.contact_phone" required="true">
-<br>Contact Address: <input type="mail" ng-model="newevent.contact_mail">
 <!--
 <br>Date: <input type="date" ng-model="date" required="true">
 <br>Time: <input type="time" ng-model="time" required="true">
 
 <br>Maximum Participants: <input type="number" ng-model="maxparticipants" required="true">-->
+</table>
 
-<br><button ng-click="newEvent(newevent)">Create an event</button>
+    <button type="submit" class="width-35 pull-left btn btn-sm btn-primary" ng-click="newEvent(newevent)">
+      <i class="ace-icon fa fa-key"></i>
+      Create an event
+    </button>
 
 

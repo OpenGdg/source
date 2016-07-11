@@ -41,6 +41,7 @@ $app->post('/login', function() use ($app) {
         }
     echoResponse(200, $response);
 });
+
 $app->post('/signUp', function() use ($app) {
     $response = array();
     $r = json_decode($app->request->getBody());
@@ -62,6 +63,10 @@ $app->post('/signUp', function() use ($app) {
             $response["status"] = "success";
             $response["message"] = "User account created successfully";
             $response["uid"] = $result;
+            $json_string='{"username":"'.$name.'","api":"0","password":"'.$password.'","emailid":"'.$email.'","location":"'.$address.'","phoneno":"'.$phone.'","eventslist":[]}';
+            $rootfile=fopen("json/".$name.".json",'w');
+            fwrite($rootfile, json_encode($json_string));
+            
             if (!isset($_SESSION)) {
                 session_start();
             }
@@ -81,6 +86,56 @@ $app->post('/signUp', function() use ($app) {
         echoResponse(201, $response);
     }
 });
+$app->post('/newevent',function() use($app) {
+
+    $db = new DbHandler();
+
+    $session=$db->getSession();
+    $response = array();
+    $r = json_decode($app->request->getBody());
+    $name = $r->event->name;
+  /**
+    $description = $r->newevent->description;
+    $contact_phone = $r->newevent->contact_phone;
+    $contact_mail = $r->newevent->contact_mail;
+    $venue = $r->newevent->venue;
+    $city = $r->newevent->city;
+    $created_by = $r->newevent->created_by;
+    $table_name = "event";
+    **/
+    if($name!=NULL){
+    $json_string='{"username":"'.$name.'"}';
+    $rootfile=fopen("json/".$name.".json",'w');
+    if(fwrite($rootfile, json_encode($json_string))){
+            $response["status"] = "success";
+            $response["message"] = "User event created successfully";
+            
+            echoResponse(200, $response);
+
+    }else{
+            $response["status"] = "error";
+            $response["message"] = "Failed to create event. Please try again";
+    }
+    }else{
+            $response["status"] = "error";
+            $response["message"] = "F Please try again";
+    }
+    
+            
+    /**
+    $column_names = array('name', 'description', 'contact_phone', 'contact_mail', 'venue', 'city', 'created_by');
+    $result = $db->insertIntoTable($r->event, $column_names, $table_name); 
+    if($result != NULL) {
+        $response["status"] = "success";
+        $response["message"]= "event created successfully";
+    } else {
+        $response["status"] = "error";
+        $response["message"] = "Failed to create event. Please try again";
+        echoResponse(201, $response);
+    }
+    **/
+});
+
 $app->get('/logout', function() {
     $db = new DbHandler();
     $session = $db->destroySession();
@@ -88,4 +143,5 @@ $app->get('/logout', function() {
     $response["message"] = "Logged out successfully";
     echoResponse(200, $response);
 });
+
 ?>

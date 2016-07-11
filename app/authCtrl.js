@@ -1,7 +1,7 @@
 app.controller('authCtrl', function ($scope, $rootScope, $routeParams, $location, $http, Data) {
     //initially set those objects to null to avoid undefined error
-    $scope.login = {};
-    $scope.signup = {};
+   // $scope.login = {};
+   // $scope.signup = {};
     $scope.doLogin = function (customer) {
         Data.post('login', {
             customer: customer
@@ -29,4 +29,16 @@ app.controller('authCtrl', function ($scope, $rootScope, $routeParams, $location
             $location.path('login');
         });
     }
+    /**
+    $scope.createevent=function(customer){
+        Data.post('createevent',{
+            customer:customer
+        }).then(function (results) {
+            Data.toast(results);
+            if (results.status == "success") {
+                $location.path('dashboard');
+            }
+        })
+    }
+    **/
 });
